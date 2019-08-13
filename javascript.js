@@ -15,12 +15,10 @@ const topics = [
 //my API key
 const APIKey = "wJ9FQnapL15iOcQCenrHnbCjBXpGt5ni";
 
-const queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    +"&api_key=wJ9FQnapL15iOcQCenrHnbCjBXpGt5ni&limit=10";
+const queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=wJ9FQnapL15iOcQCenrHnbCjBXpGt5ni&limit=10";
 
 function renderButtons() {
     // Deleting the show buttons prior to adding new show buttons
-    // (this is necessary otherwise we will have repeat buttons)
     document.getElementById("buttons-view").innerHTML = "";
 
     // Looping through the array of shows
@@ -52,34 +50,24 @@ document
 
 renderButtons();
 
-
 fetch(queryURL)
     .then(function (response) {
-        return response.json();
+        return response.json()
     })
     .then(function (responseJson) {
-        const results = responseJson.data;
-        for (let i = 0; i < results.length; i++) {
-            if (results[i].rating === "g" || results[i].rating === "pg") {
-                const gifButton = document.createElement("button");
-                const rating = results[i].rating;
 
-                // Creating a paragraph tag with the result item's rating
-                const p = document.createElement("p");
-                p.innerHTML = "Rating: " + rating;
-                // Creating an image tag
-                const personImage = document.createElement("img");
+        // Creating a div to hold the gif
+        const gifDiv = document.createElement("div");
+        gifDiv.classList.add('movie');
 
-                // Giving the image tag an src attribute of a proprty pulled off the
-                // result item
-                personImage.setAttribute("src", results[i].images.fixed_height.url);
+        // Storing the rating data
+        const rating = responseJson.Rated;
 
-                // Appending the paragraph and personImage we created to the "gifDiv" div we created
-                gifDiv.append(p);
-                gifDiv.append(personImage);
+        // Creating an element to have the rating displayed
+        const rated = document.createElement("p")
+        rated.innerHTML = "Rating: " + rating;
 
-                // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
-                document.getElementById("gifs-appear-here").prepend(gifDiv);
-            }
-        }
+        // Displaying the rating
+        movieDiv.append(rated);
+
     });
