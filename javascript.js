@@ -1,12 +1,12 @@
 // array of 90s TV shows
 const topics = [
-    "The Wonder Years",
-    "Cheers",
     "Friends",
     "Seinfeld",
     "Frasier",
     "The Simpsons",
     "The X-Files",
+    "Cheers TV",
+    "The Wonder Years",
     "Saved by the Bell",
     "Family Matters",
     "Boy Meets World",
@@ -66,7 +66,7 @@ function buttonClickListener() {
                     showImage.classList.add("gif");
                     showImage.setAttribute("src", results[i].images.original_still.url);
                     showImage.setAttribute("data-state", "still");
-                    showImage.setAttribute("data-animate", results[i].images.fixed_height.url);
+                    showImage.setAttribute("data-animate", results[i].images.original.url);
                     showImage.setAttribute("data-still", results[i].images.original_still.url);
                     showImage.addEventListener("click", imageToggleListener);
 
