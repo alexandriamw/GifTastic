@@ -37,10 +37,6 @@ function renderButtons() {
 
     document.querySelectorAll("button").forEach(function (button) {
         button.addEventListener("click", buttonClickListener);
-    })
-    
-    document.querySelectorAll(".gif").forEach(function (img) {
-        img.addEventListener("click", imageToggleListener);
     });
 }
 
@@ -72,6 +68,7 @@ function buttonClickListener() {
                     showImage.setAttribute("data-state", "still");
                     showImage.setAttribute("data-animate", results[i].images.fixed_height.url);
                     showImage.setAttribute("data-still", results[i].images.original_still.url);
+                    showImage.addEventListener("click", imageToggleListener);
 
                     gifDiv.prepend(p);
                     gifDiv.prepend(showImage);
