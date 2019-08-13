@@ -82,7 +82,7 @@ function buttonClickListener() {
         });
 }
 
-function imageToggleListener () {
+function imageToggleListener (event) {
     const state = event.target.getAttribute("data-state");
 
     if (state === "still") {
