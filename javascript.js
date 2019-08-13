@@ -67,6 +67,7 @@ function buttonClickListener() {
                     p.innerHTML = "Rating: " + rating;
 
                     const showImage = document.createElement("img");
+                    showImage.classList.add("gif");
                     showImage.setAttribute("src", results[i].images.original_still.url);
                     showImage.setAttribute("data-state", "still");
                     showImage.setAttribute("data-animate", results[i].images.fixed_height.url);
